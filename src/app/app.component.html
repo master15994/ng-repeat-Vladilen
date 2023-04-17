@@ -1,7 +1,116 @@
-<app-post></app-post>
+<h1>Angular Practise</h1>
+<!--* -----------------------------ngFor-------------------------- -->
+<!-- <ul>
+  <li *ngFor="let num of array; let idx = index">
+    {{ idx + 1 }} : <strong> {{ num }}</strong>
+  </li>
+</ul> -->
+<!-- <ul style="list-style: none; line-height: 30px">
+  <li *ngFor="let post of objs">
+    {{ post.title }} {{ post.author }}
+    <ul>
+      <li *ngFor="let comment of post.comments">
+        <small>{{ comment.name }}</small>
+        <br />
+        <strong>{{ comment.text }}</strong>
+      </li>
+    </ul>
+  </li>
+</ul> -->
 
-<img src="{{ img }}" alt="" />
+<!--* -----------------------------ngFor-------------------------- -->
+
+<!--* -----------------------------ngSwitch-------------------------- -->
+<!-- <button (click)="backgorundToggle = !backgorundToggle">TOGGLE</button>
+<div [ngSwitch]="backgorundToggle">
+  <p *ngSwitchCase="true" class="red">Lorem ipsum dolor sit amet.</p>
+  <p *ngSwitchCase="false" class="blue">
+    Lorem ipsum, dolor sit amet consectetur adipisicing.
+  </p>
+  <p *ngSwitchDefault="">Lorem, ipsum dolor.</p>
+</div> -->
+<!--* -----------------------------ngSwitch-------------------------- -->
+<!--* -----------------------------ngIf else-------------------------- -->
+
+<!-- <button (click)="backgorundToggle = !backgorundToggle">TOGGLE</button>
+
+<p class="red" *ngIf="backgorundToggle; else blueP">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, explicabo!
+</p>
+<ng-template #blueP
+  ><p class="blue">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, quaerat!
+  </p></ng-template
+> -->
+
+<!--* -----------------------------ngIf else-------------------------- -->
+
+<!--* --------------------------ngClass-------------------- -->
+<!-- 
+<button (click)="backgorundToggle = !backgorundToggle">TOGGLE</button>
+<p
+  [ngClass]="{
+    red: backgorundToggle,
+    blue: !backgorundToggle
+  }"
+>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae
+  voluptatum omnis nesciunt illo sint!
+</p> -->
+<!--* --------------------------ngClass-------------------- -->
+
+<!--* --------------------------ngStyle-------------------- -->
+<!-- <button (click)="backgorundToggle1 = !backgorundToggle1" style="margin: 20px">
+  Toggle!
+</button>
+<img
+  [src]="img"
+  alt=""
+  [ngStyle]="{
+    backgroundColor: backgorundToggle1 ? 'yellow' : 'red'
+  }"
+/>
+
+<div
+  [ngStyle]="{
+    width: '200px',
+    height: '200px',
+    borderRadius: '10px',
+    border: '1px dashed #ccc',
+    backgroundColor: backgorundToggle ? 'red' : 'yellow'
+  }"
+>
+  <p
+    [ngStyle]="{
+      textAlign: 'center',
+      paddingTop: '40px',
+      fontSize: '40px',
+      color: '#ccc'
+    }"
+  >
+    Culture
+  </p>
+</div>
+<button (click)="backgorundToggle = !backgorundToggle" style="margin: 20px">
+  Toggle!
+</button> -->
+
+<!-- *--------------------------ngClass-------------------- -->
+<!-- ---------------------- Two Way Binding-------------------- -->
+<!-- <input type="text" [(ngModel)]="title" />
+<p>{{ title }}</p> -->
+
+<!-- 
+
+
+    <input type="text" (keydown.enter)="onInput($event)" />
+
+
+<p>
+  <strong>{{ inputValue }}</strong>
+</p>
+
 <app-post2></app-post2>
 
 <hr />
-<app-post4></app-post4>
+<app-post4></app-post4> -->
