@@ -1,4 +1,15 @@
-<div>
-  <h2>Repeat Angular</h2>
-</div>
-<p style="font-size: 2rem; margin-left: 2rem"></p>
+<input
+  type="text"
+  placeholder="Title..."
+  style="width: 600px; height: 20px; margin-bottom: 8px"
+  [(ngModel)]="title"
+/>
+<br />
+<input
+  type="text"
+  placeholder="Text..."
+  style="width: 600px; height: 20px; margin-bottom: 8px"
+  [(ngModel)]="text"
+/>
+<br />
+<button (click)="addPost()">Добавить пост!</button>

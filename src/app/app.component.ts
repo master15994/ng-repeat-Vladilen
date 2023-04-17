@@ -1,11 +1,28 @@
 import { Component } from '@angular/core';
-
+export interface Post {
+  title: string;
+  text: string;
+  id?: number;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  posts: Post[] = [
+    {
+      title: 'Be health',
+      text: 'If you wanna be ok,wash u penus everyday',
+      id: 1,
+    },
+    { title: 'Not health', text: 'Drink dark bear every morning', id: 2 },
+  ];
+
+  updatePosts(post: Post) {
+    this.posts.unshift(post);
+    console.log('Post', post);
+  }
   // objs = [
   //   {
   //     title: 'Post2',
