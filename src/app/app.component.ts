@@ -10,6 +10,7 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isVisible = false;
   // posts: Post[] = [
   //   {
   //     title: 'Be health',

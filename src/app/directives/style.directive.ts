@@ -12,23 +12,20 @@ import {
   selector: '[appStyle]',
 })
 export class styleDirective {
-  @Input('appStyle') color: string = 'red';
-
   @Input() dStyle = {
+    color: 'string',
     border: 'string',
-    borderRadius: 'string',
-    fontWeigth: 'string',
     fontSize: 'string',
+    fontWeigth: 'string',
+    borderRadius: 'string',
     padding: 'string',
   };
-  @HostBinding('style.color') elColor = null;
 
   constructor(private el: ElementRef, private r: Renderer2) {
     // el.nativeElement.style.color = 'red';
   }
-
   @HostListener('mouseenter') onEnter() {
-    this.r.setStyle(this.el.nativeElement, 'color', null);
+    this.r.setStyle(this.el.nativeElement, 'color', this.dStyle.color);
     this.r.setStyle(this.el.nativeElement, 'border', this.dStyle.border);
     this.r.setStyle(
       this.el.nativeElement,
