@@ -1,6 +1,35 @@
-<app-post (onAdd)="updatePosts($event)"></app-post>
+<h2>Angular Directive</h2>
+
+<p
+  appStyle="purple"
+  [dStyle]="{
+    fontWeigth: 'bold',
+    border: '1px solid black',
+    borderRadius: '5px',
+    fontSize: '40px',
+    padding: '20px'
+  }"
+>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione repellendus
+  labore fuga, in fugiat ab.
+</p>
+
+<p
+  appStyle="green"
+  [dStyle]="{
+    fontWeigth: 'bold',
+    border: '4px solid green',
+    borderRadius: '5px',
+    fontSize: '40px',
+    padding: '20px'
+  }"
+>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione repellendus
+  labore fuga, in fugiat ab.
+</p>
+<!-- <app-post (onAdd)="updatePosts($event)"></app-post>
 <hr />
 <app-post-form *ngFor="let p of posts" [post]="p">
   <small *ngIf="p.text.length > 10; else short">Post too small</small>
   <ng-template #short>Post too long</ng-template>
-</app-post-form>
+</app-post-form> -->
