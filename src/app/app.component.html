@@ -1,3 +1,6 @@
 <app-post (onAdd)="updatePosts($event)"></app-post>
 <hr />
-<app-post-form *ngFor="let p of posts" [post]="p"> </app-post-form>
+<app-post-form *ngFor="let p of posts" [post]="p">
+  <small *ngIf="p.text.length > 10; else short">Post too small</small>
+  <ng-template #short>Post too long</ng-template>
+</app-post-form>

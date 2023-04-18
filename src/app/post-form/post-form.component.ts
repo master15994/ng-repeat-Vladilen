@@ -1,4 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  DoCheck,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Post } from '../app.component';
 
 @Component({
@@ -6,8 +15,23 @@ import { Post } from '../app.component';
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
 })
-export class PostFormComponent implements OnInit {
+// implements OnInit, OnChanges, DoCheck, AfterContentInit, OnDestroy
+export class PostFormComponent {
   @Input() post!: Post;
 
-  ngOnInit(): void {}
+  // * -------------------------- Lifycycle Hooks ---------------------
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('ngOnChanges', changes);
+  // }
+  // ngOnInit(): void {
+  //   console.log('ngOnInit');
+  // }
+
+  // ngDoCheck(): void {
+  //   console.log('ngDoCheck');
+  // }
+  // ngAfterContentInit(): void {
+  //   console.log('ngAfterContentInit');
+  // }
+  // ngOnDestroy(): void {}
 }
