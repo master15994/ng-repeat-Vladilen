@@ -1,4 +1,46 @@
-<h2>Angular Directive</h2>
+<h1>Angular Pipe</h1>
+
+<!-- *------------------------ Pipe - Filter -------------------------- -->
+<button (click)="fieldTitle = 'title'">Title</button>
+<button (click)="fieldTitle = 'text'">Text</button>
+
+<input type="text" [(ngModel)]="search" />
+<div *ngFor="let post of posts | filter : search : fieldTitle">
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.text }}</p>
+</div>
+<!-- *------------------------ Pipe - Filter -------------------------- -->
+
+<!-- <p>{{ "i went to Cacacuda" | exMark }}</p> -->
+<!-- *------------------------------ Make u own Pipe--------------------------- -->
+<!-- <p>{{ 10 | mult : 2 }}</p>
+<p>{{ 10 | mult : 1 }}</p>
+<p>{{ 10 | mult : 3 }}</p>
+<p>{{ 10 | mult : 5 }}</p>
+<p>{{ 10 | mult : 10 }}</p> -->
+<!-- <pre>{{ obj | json }}</pre> -->
+<!-- <p>{{ n | currency }}</p>
+<p>{{ n | percent }}</p>
+<p>{{ n }}</p> -->
+<!-- *------------------------------ Make u own Pipe--------------------------- -->
+
+<!-- *------------------------------ Pipe Date--------------------------- -->
+<!-- <h2>{{ date | date : "fullDate" }}</h2>
+<h2>{{ date | date : "longDate" }}</h2>
+<h2>{{ date | date : "long" }}</h2>
+<h2>{{ date | date : "MMMM dd yyyy hh:mm:ss" }}</h2> -->
+<!-- *------------------------------ Pipe Date--------------------------- -->
+<!-- <p>{{ str | uppercase | lowercase | titlecase }}</p>
+<h2>{{ str | slice : 1 - 4 }}</h2>  -->
+
+<!-- *------------------------------ Pipe Number--------------------------- -->
+<!-- <p>{{ e | number : "1.1-1" }}</p>
+<p>{{ e | number : "1.1-9" }}</p>
+<p>{{ e | number : "3.1" }}</p>
+<p>{{ e | number : "1.0-0" }}</p> -->
+<!-- *------------------------------ Pipe Number--------------------------- -->
+
+<!-- *<h2>Angular Directive</h2>
 
 <p
   appStyle="purple"
@@ -50,7 +92,7 @@
   <div class="card">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, pariatur?
   </div>
-</ng-template>
+</ng-template> -->
 
 <!-- <div class="card" *ngIf="!isVisible">
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, pariatur?

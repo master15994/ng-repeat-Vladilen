@@ -6,19 +6,16 @@ import { AppComponent } from './app.component';
 
 // import { Post4Component } from './posts/post4.component';
 import { FormsModule } from '@angular/forms';
-import { PipeComponent } from './pipe/pipe.component';
+
 import { PostComponent } from './posts/post/post.component';
 import { PostFormComponent } from './posts/post-form/post-form.component';
 import { styleDirective } from './directives/style.directive';
+import { MultPipe } from './pipe/multi-by.pipe';
+import { ExMarkPipe } from './pipe/ex-mark.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PipeComponent,
-    PostComponent,
-    PostFormComponent,
-    styleDirective,
-  ],
+  declarations: [AppComponent, MultPipe, ExMarkPipe, FilterPipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

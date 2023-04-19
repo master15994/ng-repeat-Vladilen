@@ -10,7 +10,30 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isVisible = false;
+  search = '';
+  fieldTitle = 'title';
+  posts: Post[] = [
+    { title: 'Bear', text: 'Best bear ever' },
+    { title: 'Pineapple', text: 'The most delelius fruit in the world' },
+    { title: 'Coffe', text: 'Who doesnt like coffe?' },
+  ];
+
+  // n = 0.19;
+  // e = Math.E;
+  // str = 'whats up';
+  // date: Date = new Date();
+
+  // obj = {
+  //   a: {
+  //     b: 2,
+  //   },
+  //   c: {
+  //     g: 6,
+  //   },
+  //   l: 77,
+  // };
+
+  // isVisible = false;
   // posts: Post[] = [
   //   {
   //     title: 'Be health',
