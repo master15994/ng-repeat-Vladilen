@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ServiceService } from './service.service';
+import { WebsiteService } from './service/website.service';
 export interface Post {
   title: string;
   text: string;
@@ -9,20 +11,53 @@ export interface Post {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  search = '';
-  fieldTitle = 'title';
-  posts: Post[] = [
-    { title: 'Bear', text: 'Best bear ever' },
-    { title: 'Pineapple', text: 'The most delelius fruit in the world' },
-    { title: 'Coffe', text: 'Who doesnt like coffe?' },
-  ];
+export class AppComponent implements OnInit {
+  constructor(private service: WebsiteService) {}
+  film: any;
+  ngOnInit(): void {
+    this.service.read().subscribe((result) => {
+      this.film = result;
+    });
 
+    console.log(this.film);
+  }
+
+  // constructor(private service: ServiceService) {}
+  // ngOnInit(): void {
+  //   this.service.read().subscribe();
+  // }
+  // constructor(private service: ServiceService) {}
+  // luke: any;
+  // ngOnInit(): void {
+  //   this.service.read().subscribe((result) => {
+  //     this.luke = result;
+  //   });
+  // }
+  // lukeObserve() {
+  //   console.log(this.luke);
+  // }
+  // ngOnInit(): void {
+  //   let yavin;
+  //   this.service.read().subscribe((result) => {
+  //     yavin = result;
+  //     console.log(yavin);
+  //   });
+  // }
+  // constructor(private service: ServiceService) {}
+  // ngOnInit(): void {
+  //   this.service.read().subscribe();
+  // }
+  // search = '';
+  // fieldTitle = 'title';
+  // posts: Post[] = [
+  //   { title: 'Bear', text: 'Best bear ever' },
+  //   { title: 'Pineapple', text: 'The most delelius fruit in the world' },
+  //   { title: 'Coffe', text: 'Who doesnt like coffe?' },
+  // ];
   // n = 0.19;
   // e = Math.E;
   // str = 'whats up';
   // date: Date = new Date();
-
   // obj = {
   //   a: {
   //     b: 2,
@@ -32,7 +67,6 @@ export class AppComponent {
   //   },
   //   l: 77,
   // };
-
   // isVisible = false;
   // posts: Post[] = [
   //   {

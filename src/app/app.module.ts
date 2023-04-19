@@ -13,10 +13,11 @@ import { styleDirective } from './directives/style.directive';
 import { MultPipe } from './pipe/multi-by.pipe';
 import { ExMarkPipe } from './pipe/ex-mark.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MultPipe, ExMarkPipe, FilterPipe],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
