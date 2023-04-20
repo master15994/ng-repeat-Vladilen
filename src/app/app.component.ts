@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from './service.service';
 import { WebsiteService } from './service/website.service';
+import { AppCounterService } from './service/app-counter.service';
+import { LocalCounterService } from './service/local-counter.service';
 export interface Post {
   title: string;
   text: string;
@@ -10,18 +12,30 @@ export interface Post {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [LocalCounterService],
 })
-export class AppComponent implements OnInit {
-  constructor(private service: WebsiteService) {}
-  film: any;
-  ngOnInit(): void {
-    this.service.read().subscribe((result) => {
-      this.film = result;
-    });
+export class AppComponent {
+  constructor(
+    public localCounterService: LocalCounterService,
 
-    console.log(this.film);
-  }
+    public appCounterService: AppCounterService
+  ) {}
 
+  // constructor(private service: WebsiteService) {}
+  // movie: any;
+  // ngOnInit(): void {
+  //   this.service.read().subscribe((result) => {
+  //     this.movie = result;
+  //   });
+  // }
+  // constructor(private service: WebsiteService) {}
+  // film: any;
+  // ngOnInit(): void {
+  //   this.service.read().subscribe((result) => {
+  //     this.film = result;
+  //   });
+  //   console.log(this.film);
+  // }
   // constructor(private service: ServiceService) {}
   // ngOnInit(): void {
   //   this.service.read().subscribe();

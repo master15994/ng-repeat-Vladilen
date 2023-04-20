@@ -14,9 +14,10 @@ import { MultPipe } from './pipe/multi-by.pipe';
 import { ExMarkPipe } from './pipe/ex-mark.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { CounterComponent } from './service/counter/counter.component';
 
 @NgModule({
-  declarations: [AppComponent, MultPipe, ExMarkPipe, FilterPipe],
+  declarations: [AppComponent, MultPipe, ExMarkPipe, FilterPipe, CounterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

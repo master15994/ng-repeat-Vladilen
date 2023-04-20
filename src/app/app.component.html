@@ -1,5 +1,20 @@
-<h1>Angular Pipe</h1>
-<pre>{{ film | json }}</pre>
+<h1>Angular Service</h1>
+
+<h2>App Count :{{ appCounterService.counter }}</h2>
+
+<button (click)="appCounterService.increace()">+</button>
+<button (click)="appCounterService.decreace()">-</button>
+<hr />
+<h2>Local Count :{{ localCounterService.counter }}</h2>
+
+<button (click)="localCounterService.increace()">+</button>
+<button (click)="localCounterService.decreace()">-</button>
+
+<app-counter></app-counter>
+<!-- *<h1>Angular Pipe</h1> -->
+
+<!-- <pre>{{ movie | json }}</pre> -->
+<!-- <pre>{{ film | json }}</pre> -->
 <!-- *------------------------ Pipe - Filter -------------------------- -->
 <!-- <button (click)="fieldTitle = 'title'">Title</button>
 <button (click)="fieldTitle = 'text'">Text</button>
