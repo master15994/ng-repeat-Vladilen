@@ -3,6 +3,7 @@ import { ServiceService } from './service.service';
 import { WebsiteService } from './service/website.service';
 import { AppCounterService } from './service/app-counter.service';
 import { LocalCounterService } from './service/local-counter.service';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 export interface Post {
   title: string;
   text: string;
@@ -14,12 +15,30 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
   providers: [LocalCounterService],
 })
-export class AppComponent {
-  constructor(
-    public localCounterService: LocalCounterService,
+export class AppComponent implements OnInit {
+  form!: FormGroup;
 
-    public appCounterService: AppCounterService
-  ) {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
+  }
+  submit() {
+    if (this.form.valid) {
+      console.log('Form: ', this.form);
+      const formData = { ...this.form.value };
+      console.log('Form data:', formData);
+    }
+  }
+  // constructor(
+  //   public localCounterService: LocalCounterService,
+
+  //   public appCounterService: AppCounterService
+  // ) {}
 
   // constructor(private service: WebsiteService) {}
   // movie: any;
