@@ -3,7 +3,13 @@ import { ServiceService } from './service.service';
 import { WebsiteService } from './service/website.service';
 import { AppCounterService } from './service/app-counter.service';
 import { LocalCounterService } from './service/local-counter.service';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  Form,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 export interface Post {
   title: string;
   text: string;
@@ -17,6 +23,7 @@ export interface Post {
 })
 export class AppComponent implements OnInit {
   form!: FormGroup;
+  idx!: string | number | null;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -25,7 +32,25 @@ export class AppComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
       ]),
+      address: new FormGroup({
+        country: new FormControl('by'),
+        city: new FormControl('', Validators.required),
+      }),
+      skills: new FormArray([]),
     });
+  }
+
+  addSkill() {
+    const control = new FormControl('', Validators.required);
+    // (this.form.get('skills') as FormArray).push(control);
+    (<FormArray>this.form.get('skills')).push(control);
+  }
+  setCapital() {
+    const cityMap = { ru: 'Москва', by: 'Минск', ua: 'Киев' };
+
+    const cityKey = this.form.get('address')?.get('country')?.value;
+
+    this.form.patchValue({ address: { cityKey } });
   }
   submit() {
     if (this.form.valid) {
