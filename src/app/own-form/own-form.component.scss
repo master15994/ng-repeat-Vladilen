@@ -1,0 +1,17 @@
+div {
+  display: inline-block;
+
+  button {
+    color: white;
+    padding: 0.5rem;
+    background: red;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    margin: 1px;
+
+    &.active {
+      background: green;
+    }
+  }
+}

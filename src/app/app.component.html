@@ -1,3 +1,11 @@
+<h1>Own NgModel</h1>
+
+<app-own-form [(ngModel)]="appState"></app-own-form>
+
+<p>AppState:{{ appState }}</p>
+<!-- *<h1>Angular Form</h1>
+
+
 <div class="container">
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h1>Angular Forms</h1>
@@ -37,6 +45,9 @@
           Сейчас кол-во символов:
           {{form.get("password")?.errors?.['minlength'].actualLength}}
         </small>
+        <small *ngIf="form.get('password')?.errors?.['restrictedEmails']"
+          >Email {{ form.get("email")?.value }} запрещен</small
+        >
       </div>
     </div>
 
@@ -64,9 +75,7 @@
 
     <div class="card">
       <h2>Ваши навыки</h2>
-      <button class="btn" type="button" (click)="addSkill()">
-        Добавить умение
-      </button>
+      <button class="btn" type="button">Добавить умение</button>
       <div class="form-control" let idx="index">
         <label>Умение{{ idx }}</label>
         <input type="text" [formControlName]="idx" />
@@ -77,7 +86,10 @@
       Отправить
     </button>
   </form>
-</div>
+</div> -->
+
+<!-- *<h1>Angular Form</h1>
+
 
 <!--* <h1>Angular Service</h1>
 

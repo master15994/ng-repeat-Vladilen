@@ -10,6 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MyValidators } from './validators/new-validators';
 export interface Post {
   title: string;
   text: string;
@@ -22,43 +23,51 @@ export interface Post {
   providers: [LocalCounterService],
 })
 export class AppComponent implements OnInit {
-  form!: FormGroup;
-  idx!: string | number | null;
+  appState = 'on';
+  ngOnInit(): void {}
+  // form!: FormGroup;
+  // idx!: string | number | null;
 
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-      address: new FormGroup({
-        country: new FormControl('by'),
-        city: new FormControl('', Validators.required),
-      }),
-      skills: new FormArray([]),
-    });
-  }
+  // ngOnInit(): void {
+  //   this.form = new FormGroup({
+  //     email: new FormControl('', [
+  //       Validators.email,
+  //       Validators.required,
+  //       MyValidators.restrictedEmails,
+  //     ]),
+  //     password: new FormControl(null, [
+  //       Validators.required,
+  //       Validators.minLength(8),
+  //     ]),
+  //     address: new FormGroup({
+  //       country: new FormControl('by'),
+  //       city: new FormControl('', Validators.required),
+  //     }),
+  //     skills: new FormArray([]),
+  //   });
+  // }
 
-  addSkill() {
-    const control = new FormControl('', Validators.required);
-    // (this.form.get('skills') as FormArray).push(control);
-    (<FormArray>this.form.get('skills')).push(control);
-  }
-  setCapital() {
-    const cityMap = { ru: 'Москва', by: 'Минск', ua: 'Киев' };
+  // addSkill() {
+  //   const control = new FormControl('', Validators.required);
+  //   // (this.form.get('skills') as FormArray).push(control);
+  //   (<FormArray>this.form.get('skills')).push(control);
+  // }
+  // setCapital() {
+  //   const cityMap = { ru: 'Москва', by: 'Минск', ua: 'Киев' };
 
-    const cityKey = this.form.get('address')?.get('country')?.value;
+  //   const cityKey = this.form.get('address')?.get('country')?.value;
 
-    this.form.patchValue({ address: { cityKey } });
-  }
-  submit() {
-    if (this.form.valid) {
-      console.log('Form: ', this.form);
-      const formData = { ...this.form.value };
-      console.log('Form data:', formData);
-    }
-  }
+  //   this.form.patchValue({ address: { cityKey } });
+  // }
+  // submit() {
+  //   if (this.form.valid) {
+  //     console.log('Form: ', this.form);
+  //     const formData = { ...this.form.value };
+  //     console.log('Form data:', formData);
+
+  //     this.form.reset();
+  //   }
+  // }
   // constructor(
   //   public localCounterService: LocalCounterService,
 

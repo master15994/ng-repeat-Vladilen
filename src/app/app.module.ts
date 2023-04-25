@@ -15,6 +15,7 @@ import { ExMarkPipe } from './pipe/ex-mark.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { CounterComponent } from './service/counter/counter.component';
+import { OwnFormComponent } from './own-form/own-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CounterComponent } from './service/counter/counter.component';
     ExMarkPipe,
     FilterPipe,
     CounterComponent,
+    OwnFormComponent,
   ],
   imports: [
     BrowserModule,
