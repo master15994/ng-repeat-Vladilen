@@ -8,7 +8,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Post } from '../../app.component';
+// import { Post } from '../../app.component';
 
 @Component({
   selector: 'app-post-form',

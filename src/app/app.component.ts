@@ -11,9 +11,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { MyValidators } from './validators/new-validators';
-export interface Post {
+import { HttpClient } from '@angular/common/http';
+import { pipe } from 'rxjs';
+export interface Todo {
+  completed: boolean;
   title: string;
-  text: string;
   id?: number;
 }
 @Component({
@@ -23,10 +25,37 @@ export interface Post {
   providers: [LocalCounterService],
 })
 export class AppComponent implements OnInit {
+  addTitle() {
+    if (!this.todoTitle.trim()) {
+      return;
+    }
+
+    const newTodo: Todo = {
+      title: this.todoTitle,
+      completed: false,
+    };
+
+    this.http
+      .post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .subscribe((todo) => {
+        this.todos.push(todo);
+        this.todoTitle = '';
+      });
+  }
+
+  todos: Todo[] = [];
+  todoTitle = '';
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-      
+    this.http
+      .get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .subscribe((todos) => {
+        console.log('res', todos);
+        this.todos = todos;
+      });
   }
+
   // appState = 'on';
   // ngOnInit(): void {}
   // form!: FormGroup;
