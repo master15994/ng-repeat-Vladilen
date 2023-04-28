@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { MyValidators } from './validators/new-validators';
 import { HttpClient } from '@angular/common/http';
-import { pipe } from 'rxjs';
+import { delay, pipe } from 'rxjs';
 export interface Todo {
   completed: boolean;
   title: string;
@@ -25,6 +25,27 @@ export interface Todo {
   providers: [LocalCounterService],
 })
 export class AppComponent implements OnInit {
+  todos: Todo[] = [];
+  todoTitle = '';
+  loading = false;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.fetchTodo();
+  }
+
+  fetchTodo() {
+    this.loading = false;
+    this.http
+      .get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .pipe(delay(400))
+      .subscribe((todos) => {
+        this.todos = todos;
+        this.loading = true;
+      });
+  }
+
   addTitle() {
     if (!this.todoTitle.trim()) {
       return;
@@ -40,19 +61,6 @@ export class AppComponent implements OnInit {
       .subscribe((todo) => {
         this.todos.push(todo);
         this.todoTitle = '';
-      });
-  }
-
-  todos: Todo[] = [];
-  todoTitle = '';
-  constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    this.http
-      .get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
-      .subscribe((todos) => {
-        console.log('res', todos);
-        this.todos = todos;
       });
   }
 
