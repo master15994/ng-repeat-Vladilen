@@ -12,12 +12,9 @@ import {
 } from '@angular/forms';
 import { MyValidators } from './validators/new-validators';
 import { HttpClient } from '@angular/common/http';
-import { delay, pipe } from 'rxjs';
-export interface Todo {
-  completed: boolean;
-  title: string;
-  id?: number;
-}
+import { Observable, delay, pipe } from 'rxjs';
+import { Todo, newService } from './new-service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -29,30 +26,25 @@ export class AppComponent implements OnInit {
   todoTitle = '';
   loading = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private newtodo: newService) {}
 
   ngOnInit(): void {
     this.fetchTodo();
   }
 
   removeTodo(id: any) {
-    this.http
-      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-      .subscribe((res) => {
-        // console.log(res);
+    this.newtodo.removeTodo(id).subscribe((res) => {
+      // console.log(res);
 
-        this.todos = this.todos.filter((t) => t.id !== id);
-      });
+      this.todos = this.todos.filter((t) => t.id !== id);
+    });
   }
   fetchTodo() {
     this.loading = false;
-    this.http
-      .get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
-      .pipe(delay(400))
-      .subscribe((todos) => {
-        this.todos = todos;
-        this.loading = true;
-      });
+    this.newtodo.fetchTodo().subscribe((todos) => {
+      this.todos = todos;
+      this.loading = true;
+    });
   }
 
   addTitle() {
@@ -60,13 +52,11 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    const newTodo: Todo = {
-      title: this.todoTitle,
-      completed: false,
-    };
-
-    this.http
-      .post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+    this.newtodo
+      .addTodo({
+        title: this.todoTitle,
+        completed: false,
+      })
       .subscribe((todo) => {
         this.todos.push(todo);
         this.todoTitle = '';
