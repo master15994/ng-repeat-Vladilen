@@ -23,8 +23,12 @@ export interface Post {
   providers: [LocalCounterService],
 })
 export class AppComponent implements OnInit {
-  appState = 'on';
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+      
+  }
+  // appState = 'on';
+  // ngOnInit(): void {}
   // form!: FormGroup;
   // idx!: string | number | null;
 
