@@ -13,14 +13,14 @@ export interface Todo {
 export class newService {
   constructor(private http: HttpClient) {}
 
-  removeTodo(id: any) {
-    return this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
-  }
-
   fetchTodo(): Observable<Todo[]> {
     return this.http
       .get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
       .pipe(delay(400));
+  }
+
+  removeTodo(id: any) {
+    return this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
   }
 
   addTodo(todo: Todo) {
@@ -28,9 +28,5 @@ export class newService {
       'https://jsonplaceholder.typicode.com/todos',
       todo
     );
-    // .subscribe((todo) => {
-    //   this.todos.push(todo);
-    //   this.todoTitle = '';
-    // });}
   }
 }

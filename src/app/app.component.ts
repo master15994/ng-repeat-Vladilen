@@ -31,19 +31,19 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.fetchTodo();
   }
+  fetchTodo() {
+    this.loading = false;
+    this.newtodo.fetchTodo().subscribe((todos) => {
+      this.todos = todos;
+      this.loading = true;
+    });
+  }
 
   removeTodo(id: any) {
     this.newtodo.removeTodo(id).subscribe((res) => {
       // console.log(res);
 
       this.todos = this.todos.filter((t) => t.id !== id);
-    });
-  }
-  fetchTodo() {
-    this.loading = false;
-    this.newtodo.fetchTodo().subscribe((todos) => {
-      this.todos = todos;
-      this.loading = true;
     });
   }
 
